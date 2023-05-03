@@ -1,0 +1,125 @@
+body {
+	margin: 0;
+	padding: 0;
+	width: 98%;
+	height: 98%;
+}
+
+/* 导航栏样式 */
+.navbar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #333;
+	color: #fff;
+	padding: 15px;
+	font-size: 24px;
+	width: 100%;
+}
+
+.navbar img {
+	margin-right: 10px;
+	height: 40px;
+	vertical-align: middle;
+}
+
+#title {
+	margin-left: 0px;
+}
+
+.navbar a {
+	color: #fff;
+	margin-left: 20px;
+	text-decoration: none;
+}
+
+
+.links {
+	display: flex;
+	align-items: center;
+}
+
+.links a {
+	margin-right: 20px;
+}
+
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: none;
+}
+
+.dialog {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 20px;
+	background-color: #fff;
+	border-radius: 5px;
+	text-align: center;
+}
+
+.dialog h2 {
+	margin-top: 0;
+  	text-align: center;
+}
+
+.dialog button {
+	margin: 10px;
+	padding: 5px 10px;
+	border: none;
+	background-color: #007bff;
+	color: #fff;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.dropdown {
+	position: relative;
+}
+
+.dropdown-btn {
+	display: inline-block;
+	position: relative;
+}
+
+.dropdown-content {
+	position: absolute;
+	z-index: 1;
+	top: 100%;
+	left: 0;
+	background-color: #333;
+	min-width: 100%;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	padding: 10px 0 10px 0;
+	margin-top: 0;
+	display: none;
+}
+
+.dropdown:hover .dropdown-content {
+	display: block;
+}
+
+.dropdown-content a {
+	display: block;
+	color: #fff;
+	align-items: center;
+	font-size: 16px;
+	padding: 5px 5px;
+	text-decoration: none;
+	text-align: center;
+}
+
+.dropdown-content a:hover {
+	background-color: #555;
+}
+
+.dropdown-btn:hover {
+	background-color: #555;
+	cursor: pointer;
+}

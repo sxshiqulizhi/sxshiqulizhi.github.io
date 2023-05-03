@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>百万富翁问题教学辅修平台</title>
+  <link rel="icon" href="logo.jpg">
+    <link rel="stylesheet" href="style.css">
+    <style>
+      /* 样式定义 */
+      body {
+        background-color: #f7f7f7;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      #header {
+        background-color: #ffcc00;
+        height: 50px;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+      #container {
+        width: 1000px;
+        margin: 0 auto;
+        padding: 20px;
+        box-sizing: border-box;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+      #left-box, #right-box {
+        display: inline-block;
+        height: 550px;
+        vertical-align: top;
+        width: 45%;
+        padding: 20px;
+        box-sizing: border-box;
+        background-color: #f2f2f2;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+      #left-box {
+        margin-right: 5%;
+      }
+      #bottom-box {
+        clear: both;
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        background-color: #f2f2f2;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        text-align: center;
+      }
+      input[type="text"], textarea {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        resize: none;
+        font-family: Arial, sans-serif;
+        color: #555;
+      }
+      textarea {
+        height: 195px;
+      }
+
+      #mei-receive{
+        height: 195px;
+      }
+      
+      input[type="text"]:disabled, textarea:disabled {
+        background-color: #eee;
+        color: #999;
+        cursor: not-allowed;
+      }
+      button {
+        background-color: #ffcc00;
+        display: inline;
+        color: #fff;
+        padding: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: Arial, sans-serif;
+        font-weight: normal;
+        width:50%;
+        text-transform: uppercase;
+        text-align:center;
+        font-size: 15px;
+      }
+      button:hover {
+        background-color: #ffa500;
+      }
+
+      #rbtn{
+        background-color: #0D6EFD;
+        width:25%;
+      }
+
+      #rbtn:hover{
+        background-color: #0D5ED7;
+      }
+
+      #wbtn{
+        background-color: #DC3545;
+        width:25%;
+      }
+
+      #wbtn:hover{
+        background-color: #BB2D3B;
+      }
+
+      h1 {
+        font-size: 24px;
+        font-weight: bold;
+        margin-top: 0;
+      }
+      label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 导航栏 -->
+	<div class="navbar">
+        <div class="logo">
+            <img src="logo.jpg" alt="Logo">
+            <a id="title" href="index.html">百万富翁问题教学辅修平台</a>
+        </div>
+        <div class="links">
+            <a href="index.html">首页</a>
+            <div class="dropdown">
+                <a href="video.html" class="dropdown-btn">视频讲解</a>
+                <div class="dropdown-content">
+                    <a href="video1.html">中小学教育</a>
+                    <a href="video.html">高等教育</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="practice.html" class="dropdown-btn">实验实践</a>
+                <div class="dropdown-content">
+                    <a href="practice.html">模拟演练</a>
+                    <a href="practice1.html">实战训练</a>
+                </div>
+            </div>
+            <a href="text.html">文字教程</a>
+        </div>
+    </div>
+    
+    <div id="container">
+      <div id="left-box">
+        <h1 style="text-align: center;font-weight: normal;">小美</h1>
+        <label for="mei-money">年终奖</label>
+        <input type="text" id="mei-money" placeholder="请输入年终奖">
+        <label for="mei-random">本次分配的随机数k</label>
+        <input type="text" id="mei-random" placeholder="分配的随机数k将在这里显示" disabled>
+        <label for="answer">小美发送的数</label>
+        <input type="text" id="answer" placeholder="请你填写小美要发送的数">
+        <label for="mei-receive">收到小明的数和处理过程</label>
+        <textarea id="mei-receive" placeholder="收到小明的数和处理过程将在这里显示" disabled></textarea>
+      </div>
+      <div id="right-box">
+        <h1 style="text-align: center;font-weight: normal;">小明</h1>
+        <label for="ming-money">年终奖</label>
+        <input type="text" id="ming-money" style="margin-bottom: 87px;" placeholder="小明的年终奖是个秘密~" disabled>
+        <label for="ming-public">本次分配的公钥</label>
+        <input type="text" id="ming-public" style="margin-bottom: 87px;" placeholder="分配的公钥将在这里显示" disabled>
+        <label for="ming-n">本次分配的n</label>
+        <input type="text" id="ming-n" style="margin-bottom: 87px;" placeholder="分配的n将在这里显示" disabled>
+      </div>
+      <div id="bottom-box">
+        <label for="question" style="font-weight: normal;" id="quest">请输入小美的年终奖</label>
+        <button onclick="handleClick()" id="continue-btn">开始算法步骤</button>
+        <button onclick="handleClick1()" id="rbtn" style="display:none;">大于</button>
+        <button onclick="handleClick2()" id="wbtn" style="display:none;">小于等于</button>
+      </div>
+    </div>
+    <script>
+        var count = 0;
+        var mingarr = [];   // 小明收到小美的数值展示
+        var meiarr = [];   // 小美收到小明的数值展示
+        var xulie = [];     // 小美收到小明的数值序列
+        var x, k, y, sn, output, output2, k1, gongyao1, siyao1, button1, send, redText, gongyao, siyao, key, mingn;
+
+        function kuaisumi(di,zhi,n){
+            var result = 1;
+            // 快速幂算法
+            while (zhi > 0) {
+                if (zhi % 2 == 0) {
+                    di = (di * di) % n;
+                    zhi /= 2;
+                } else {
+                    result = (result * di) % n;
+                    di = (di * di) % n;
+                    zhi = (zhi - 1) / 2;
+                }
+            }
+            return result;
+        }
+
+        // 计算a关于模m的乘法逆元x
+        function modInverse(a, m) {
+          for (let x = 1; x < m; x++) {
+            if ((a * x) % m == 1) {
+              return x;
+            }
+          }
+          return -1;
+        }
+
+        // 判断一个数是否为素数
+        function isPrime(n) {
+          if (n <= 1) {
+            return false;
+          }
+          for (let i = 2; i <= Math.sqrt(n); i++) {
+            if (n % i == 0) {
+              return false;
+            }
+          }
+          return true;
+        }
+
+        // 生成素数
+        function generatePrime() {
+          let p;
+          do {
+            p = Math.floor(Math.random() * 97) + 2; // 生成2~97之间的随机数
+          } while (!isPrime(p));
+          return p;
+        }
+
+        // 生成公钥和私钥
+        function generateKeys() {
+          const p = generatePrime();
+          const q = generatePrime();
+          const n = p * q;
+          const phi_n = (p - 1) * (q - 1);
+          const e = 17; // 常用的加密指数
+          const d = modInverse(e, phi_n);
+          return {
+            publicKey: e,
+            privateKey: d,
+            n: n,
+          };
+        }
+
+        function handleClick() {
+            count++;
+            var quest = document.getElementById("quest");
+            button1 = document.getElementById("continue-btn");
+    
+            if(count == 0){
+                mingarr = []; meiarr = []; xulie = [];      // 数组清空
+                button1.innerHTML = "开始算法步骤";
+                quest.innerHTML = "请输入小美的年终奖";
+                output2 = document.getElementById("mei-receive");
+                output2.value = "";
+                gongyao1= document.getElementById("ming-public");
+                gongyao1.value = "";
+                k1 = document.getElementById("mei-random");
+                k1.value = "";
+                answer = document.getElementById("answer");
+                answer.value = "";
+                key = document.getElementById("ming-money");
+                key.value = "";
+                mingn = document.getElementById("ming-n");
+                mingn.value = "";
+            }
+            if (count === 1) {
+                button1.innerHTML = "提交答案";
+                x = document.getElementById("mei-money").value;
+                k = Math.floor(Math.random() * 100) + 20;      // 底数
+                y = Math.floor(Math.random() * 100) + 10;
+
+                const keys = generateKeys();
+                gongyao = keys.publicKey;     // 指数
+                siyao = keys.privateKey;
+                var n = keys.n;     // 模数
+
+                sn = n;
+                k1 = document.getElementById("mei-random");
+                gongyao1= document.getElementById("ming-public");
+                mingn = document.getElementById("ming-n");
+                
+                k1.value = k;
+                gongyao1.value = gongyao;
+                mingn.value = n;
+                send = kuaisumi(k,gongyao,n) - x;
+                console.log(send);
+                quest.innerHTML = "请填写本次小明收到小美的数";
+            } 
+            
+            else if(count == 2){
+                answer = document.getElementById("answer").value;
+                if(answer == send)
+                {
+                    button1.innerHTML = "继续算法步骤";
+                    quest.style.color = "black";
+                    mingarr.push("收到小美的值为"+send);
+
+                    // 计算n个数
+                    for (var i = 1; i <= sn; i++) {
+                        var value = kuaisumi(send + i, siyao, sn);
+                        if(i > y){
+                            mingarr.push("z_"+i+"=("+send+"+"+i+")^"+siyao+" mod "+sn+"="+value+",将此结果+1");
+                            var add = value + 1;
+                            meiarr.push("第"+i+"个数是"+add);
+                            xulie.push(add);
+                        }
+                        else{
+                            mingarr.push("z_"+i+"=("+send+"+"+i+")^"+siyao+" mod "+sn+"="+value);
+                            meiarr.push("第"+i+"个数是"+value);
+                            xulie.push(value);
+                        }
+                    }
+
+                    quest.innerHTML = "回答正确!接下来您收到小明发来的数,请根据收到的数判断小美和小明的年终奖数量关系";
+                    rbtn = document.getElementById("rbtn")
+                    rbtn.style.display = "inline-block";
+                    rbtn.style.margin = "0 10px";
+                    wbtn = document.getElementById("wbtn")
+                    wbtn.style.display = "inline-block";
+                    wbtn.style.margin = "0 10px";
+                    button1.style.display ="none";
+                    output2 = document.getElementById("mei-receive");
+                    output2.value = meiarr.join("\n");
+                }
+                else{
+                    count--;
+                    quest.innerHTML = "回答有误!请重新提交答案~";
+                    quest.style.color = "red";
+                }
+            }
+            else if (count === 4) {
+                if(xulie[x - 1] == k){
+                    quest.innerHTML = "第"+x+"个数为"+xulie[x - 1]+"等于"+k+",则小美年终奖小于等于小明!~";
+                }
+                else{
+                    quest.innerHTML = "第"+x+"个数为"+xulie[x - 1]+"不等于"+k+",则小美年终奖大于小明!~";
+                }
+                count = -1;  // 重置
+                button1.innerHTML = "再试一次";
+            }
+        }
+
+        function handleClick1() {
+            if(xulie[x - 1] == k){
+                quest.innerHTML = "回答错误! 小美年终奖小于等于小明!";
+            }
+            else{
+                quest.innerHTML = "回答正确! 小美年终奖大于小明!";
+            }
+
+            var key = document.getElementById("ming-money");
+            key.value = y;
+            count = -1;  // 重置
+            button1.style.display ="inline";
+            button1.innerHTML = "再试一次";
+            rbtn.style.display ="none";
+            wbtn.style.display ="none";
+        }
+
+        function handleClick2() {
+            if(xulie[x - 1] == k){
+                quest.innerHTML = "回答正确! 小美年终奖小于等于小明!";
+            }
+            else{
+                quest.innerHTML = "回答错误! 小美年终奖大于小明!";
+            }
+
+            key = document.getElementById("ming-money");
+            key.value = y;
+            count = -1;  // 重置
+            button1.style.display ="inline";
+            button1.innerHTML = "再试一次";
+            rbtn.style.display ="none";
+            wbtn.style.display ="none";
+        }
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>百万富翁问题教学辅修平台</title>
+    <link rel="icon" href="logo.jpg">
+    <link rel="stylesheet" href="style.css">
+    <meta charset="utf-8" />
+	<style>
+		body {
+			background-color: #F5F5F5;
+			font-family: Arial, sans-serif;
+			line-height: 1.5;
+			margin: 0;
+			padding: 0;
+		}
+		h1 {
+			color: #333333;
+			font-size: 2.5rem;
+			margin-top: 30px;
+			text-align: center;
+		}
+		.container {
+			display: flex;
+			flex-wrap: wrap;
+			margin: 2rem auto;
+			max-width: 960px;
+			padding: 1rem;
+			background-color: #FFFFFF;
+			box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+			border-radius: 5px;
+		}
+		.box {
+			flex: 1 1 33%;
+			margin: 1rem;
+			padding: 2rem;
+			border: 1px solid #CCCCCC;
+			border-radius: 5px;
+		}
+		.box:first-child {
+			flex-basis: 50%;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: center;
+			border: none;
+			background-color: #F0F0F0;
+		}
+        
+		.box h2 {
+			color: #333333;
+			font-size: 1.5rem;
+			margin-top: 0;
+			margin-bottom: 1rem;
+		}
+		.box p {
+			color: #666666;
+			font-size: 1rem;
+			margin-top: 0;
+			margin-bottom: 1rem;
+			text-align: justify;
+		}
+		.box ul {
+			color: #666666;
+			font-size: 1rem;
+			margin-top: 0;
+			margin-bottom: 1rem;
+			padding-left: 1rem;
+		}
+		.box img {
+			max-width: 100%;
+			height: auto;
+		}
+	</style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="logo.jpg" alt="Logo">
+            <a id="title" href="index.html">百万富翁问题教学辅修平台</a>
+        </div>
+        <div class="links">
+            <a href="index.html">首页</a>
+            <div class="dropdown">
+                <a href="video.html" class="dropdown-btn">视频讲解</a>
+                <div class="dropdown-content">
+                    <a href="video1.html">中小学教育</a>
+                    <a href="video.html">高等教育</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="practice.html" class="dropdown-btn">实验实践</a>
+                <div class="dropdown-content">
+                    <a href="practice.html">模拟演练</a>
+                    <a href="practice1.html">实战训练</a>
+                </div>
+            </div>
+            <a href="text.html">文字教程</a>
+        </div>
+      </div>
+	<h1>姚期智院士</h1>
+	<div class="container">
+		<div class="box" style="display: flex;">
+			<div class="left" style="width: 30%;">
+				<img src="yaoqizhi.jpg" alt="姚期智院士" style="width: 200px; height: auto;">
+			</div>
+			<div class="right" style="width: 70%;">
+				<h2>个人简介</h2>
+				<p>姚期智院士是中国著名的计算机科学家和密码学家,他于1946年出生于湖北省孝感市。他的研究方向包括计算理论及其在密码学和量子计算中的应用,在三大方面具有突出贡献：</p>
+				<ul>
+					<li>创建理论计算机科学的重要次领域：通讯复杂性和伪随机数生成计算理论；</li>
+					<li>奠定现代密码学基础，在基于复杂性的密码学和安全形式化方法方面有根本性贡献；</li>
+					<li>解决线路复杂性、计算几何、数据结构及量子计算等领域的开放性问题并建立全新典范。</li>
+				</ul>
+			</div>
+        </div>
+    </div>
+    <h1>经典的非对称加密算法——RSA算法</h1>
+	<div class="container">
+		<div class="box">
+			<div class="right">
+				<h2>算法原理</h2>
+				<ul>
+					<li>选择两个大质数p和q,并计算它们的乘积n=p*q;</li>
+					<li>计算欧拉函数φ(n)=(p-1)*(q-1);</li>
+					<li>选择一个整数e(1&lt e &lt φ(n))作为公钥,使得e与φ(n)互质;</li>
+                    <li>计算d使得d*e ≡ 1 (mod φ(n)),即d是e在模φ(n)意义下的逆元素,即为私钥;</li>
+                    <li>公钥为(n,e),私钥为(n,d);</li>
+                    <li>加密时,将明文m用公钥加密得到密文c,即c ≡ m^e (mod n);</li>
+                    <li>解密时,用私钥对密文进行解密,即m ≡ c^d (mod n)。</li>
+				</ul>
+                <p>RSA算法的安全性基于大质数分解的困难性。由于目前没有有效的算法可以在多项式时间内分解大质数,因此RSA算法被认为是一种安全可靠的加密算法。</p>
+			</div>
+        </div>
+    </div>
+    <h1>百万富翁问题</h1>
+	<div class="container">
+		<div class="box">
+			<div class="right">
+				<h2>解决方案</h2>
+                <p>假设小明和小美分别得到公司的一笔年终奖,分别为x和y(具体数值不公开),他们想要比较谁的年终奖更多,但不想直接透露自己的年终奖数额。这时候,小明可以生成一对RSA算法中的公钥和私钥,并将公钥公开给小美。</p>
+				<ul>
+					<li>小美选择一个随机数k,并用小明提供的公钥对其进行加密得到c = k^e (mod n),其中e是小明提供的公钥中的指数,n是两个大质数p和q相乘得到的结果;</li>
+					<li>小美将加密后的结果c - x发送给小明;</li>
+					<li>小明收到c - x后,使用自己持有的私钥计算n个数z_i = (c - x + i)^d (mod n),其中d是小明的私钥,1 &lt= i &lt= n;</li>
+                    <li>小明将y + 1 &lt= i &lt= n的各个数加一,并将所有z_i发送给小美;</li>
+                    <li>小美收到一系列数后,检查第x个数是否等于k。若等于,则年终奖x &lt= y;不等于,则年终奖x > y。</li>
+				</ul>
+			</div>
+        </div>
+    </div>
+</body>
+</html>
+	
